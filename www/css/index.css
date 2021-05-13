@@ -382,4 +382,17 @@ body {
     background: var(--blue-gradient);
     border-radius: 100px;
 }
- 
+
+  .mask-img {
+    display: block;
+    max-width: 50%;
+    height: 300px;
+    margin: 50px auto 20px;
+  }
+  
+  .object-mask {
+    -webkit-mask-image: url(https://upload.wikimedia.org/wikipedia/commons/1/14/Mask_user.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 150px;
+    -webkit-mask-position: center;
+  }
