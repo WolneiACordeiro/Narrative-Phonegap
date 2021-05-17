@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="27" viewBox="0 0 29 27">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00aeef"/>
+      <stop offset="1" stop-color="#34c7ff"/>
+    </linearGradient>
+  </defs>
+  <path id="Caminho_342" data-name="Caminho 342" d="M23.75,9l-2.044,2.115L25.446,15H10.7v3H25.446l-3.741,3.87L23.75,24,31,16.5ZM4.9,6H16.5V3H4.9A2.96,2.96,0,0,0,2,6V27a2.96,2.96,0,0,0,2.9,3H16.5V27H4.9Z" transform="translate(-2 -3)" fill="url(#linear-gradient)"/>
+</svg>
