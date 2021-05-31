@@ -9,4 +9,4 @@ Wolnei Cordeiro | Luciano Aparecido | Ryan Braz
 
 ---
 
-Para o projeto funcionar corretamente é preciso descompactar o arquivo "node_module.rar" dentro da pasta "www".
+Para o projeto funcionar corretamente, é preciso descompactar o arquivo "node_module.rar" dentro da pasta "www".
