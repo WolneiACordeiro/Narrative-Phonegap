@@ -541,6 +541,7 @@ body {
     object-fit: cover;
     margin-right: 5px;
     margin-top: 5px;
+    z-index: 999;
   }
 
   .mask-img-history-small {
@@ -616,7 +617,6 @@ body {
       display: flex;
       justify-content: flex-end;
       width: 330px;
-      height: 275px;
   }
 
   .historysave-img {
@@ -818,4 +818,26 @@ body {
 
     #historic-list {
         margin-bottom: 50px;
+    }
+
+    .selector-img {
+        box-sizing: content-box;
+      } 
+
+    .splide {
+        width: 330px;
+    }
+
+    .splide, .splide__slide {
+        position: relative;
+        outline: none;
+        height: 220px;
+    }
+
+    .splide__pagination__page {
+        border-radius: 0px 3px 0px 3px;
+    } 
+
+    .splide__arrow--next, .splide__arrow--prev {
+        visibility: hidden;
     }

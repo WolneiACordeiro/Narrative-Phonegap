@@ -819,3 +819,7 @@ body {
     #historic-list {
         margin-bottom: 50px;
     }
+
+    .selector-img {
+        box-sizing: content-box;
+      } 

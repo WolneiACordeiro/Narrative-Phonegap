@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Narrative - História</title>
+
+    <script src="node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="node_modules/@splidejs/splide/dist/css/splide.min.css">
 </head>
 
 <body>
@@ -42,7 +45,15 @@
         
         <div class="history-img">
             <img class="mask-img-history" src="img/user_clara.jpg" alt="Usuário">
-            <img class="history-img-content" src="img/historia_img.jpg" alt="Paisagem">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide"><img src="img/historia_img.jpg" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/historia_img.jpg" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/historia_img.jpg" class="history-img-content" alt="Paisagem"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="tag-area">
@@ -85,6 +96,10 @@
         </div>
         
     </section>
+
+    <script>
+        new Splide( '.splide' ).mount();
+    </script>
 
 </body>
 
