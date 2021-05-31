@@ -6,3 +6,7 @@ Olá!  Este é o projeto Narrative! :package:
 
 Grupo:
 Wolnei Cordeiro | Luciano Aparecido | Ryan Braz
+
+---
+
+Para o projeto funcionar corretamente é preciso descompactar o arquivo "Nodemodule.rar" dentro da pasta "www".
