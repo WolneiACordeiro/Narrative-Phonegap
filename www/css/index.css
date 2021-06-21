@@ -360,6 +360,7 @@ body {
     width: 100vw;
     min-height: 72px;
     background-image: var(--blue-gradient);
+    z-index: 99;
 }
 
 .blue-header-top {
@@ -552,6 +553,28 @@ body {
     object-fit: cover;
     margin-left: 5px;
     margin-top: 5px;
+  }
+
+  .mask-img-history-medium {
+    position: absolute;
+    border-radius: 100% !important;
+    width: 45px !important;
+    height: 45px;
+    object-fit: cover;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  .mask-img-map {
+    position: absolute;
+    border-radius: 100%;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    margin-left: 10px;
+    margin-top: 60px;
+    z-index: 999;
+    box-shadow: 0 0px 10px 0 var(--box-shadow);
   }
 
   .mask-icon-history-1, .mask-icon-history-2 {
@@ -841,3 +864,191 @@ body {
     .splide__arrow--next, .splide__arrow--prev {
         visibility: hidden;
     }
+
+    html, body, #map {
+        height: 100%;
+    }
+
+    .map-area-view {
+        width: 100%;
+        min-width: 375px;
+        min-height: 84.7vh;
+        transform: translateY(-55px);
+    }
+
+    .main-sub-options {
+        box-shadow: 1px 0px 50px 90px rgb(255 255 255 / 85%);
+        position: absolute;
+        bottom: 0;
+        z-index: 999;
+    }
+
+    .slider {
+        width: 600px;
+        transform: translateY(-55px);
+        z-index: 9999;
+    }
+
+    .slick-slide {
+      margin: 0px 5px;
+    }
+
+    .slick-slide img {
+      width: 100%;
+      border-radius: 0 20px 0 0;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      width: 0px;
+      height: 0px;
+    }
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+
+    .slider-container {
+        position: absolute;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        height: auto;
+        align-items: flex-end;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .slider-area {
+      display: flex;
+      flex-direction: column;
+      background: var(--blue-gradient);
+      height: 200px;
+      border-radius: 0 25px;
+      box-shadow: 0 3px 14px rgb(0 0 0 / 40%);
+    }
+
+    .img-area {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 100% 0;
+    }
+
+    .img-area-main {
+      height: 70%;
+    }
+
+    .img-desc {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 30%;
+    }
+
+    .img-desc span {
+      margin-left: 15px;
+    }
+
+    .img-title {
+      font-weight: bold;
+      font-size: 15px;
+      color: var(--white-text);
+    }
+
+    .img-desc-text {
+      font-size: 10px;
+      color: var(--white-text);
+    }
+
+    /* button */
+
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaflet-popup-content {
+    color: #0089a5;
+    
+    font-size:2rem;
+    font-weight: 600;
+    margin: .8rem 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leaflet-popup-content a {
+    width: 4rem;
+    height: 4rem;
+    background: #15c3d6;
+    box-shadow: 17.2828px 27.65px 41.48px rgba(23, 142, 166, 0.16);
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .2s;
+}
+
+.leaflet-popup-content a:hover {
+    background: #17d6eb
+}
+
+.leaflet-popup-tip {
+    display: none;
+}
+
+.leaflet-container {
+    font: 600 1.8rem/1 'Nunito', sans-serif;
+    z-index: 5;
+}
+
+.choose-history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose-history img {
+    transform: translateX(-2px) translateY(2px);
+}
+
+.read-history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.read-history img {
+    border-radius: 100%;
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+      object-position: 100% 0;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    visibility: hidden;
+}
+
+.slider a {
+    text-decoration: none;
+}
+
