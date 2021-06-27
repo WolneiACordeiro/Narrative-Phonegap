@@ -571,7 +571,7 @@ body {
     width: 65px;
     height: 65px;
     object-fit: cover;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 60px;
     z-index: 999;
     box-shadow: 0 0px 10px 0 var(--box-shadow);
@@ -655,8 +655,7 @@ body {
 
 .myBox {
     border: none;
-    border-radius: 0 22px 0 22px;
-    text-align: left;
+    text-align: justify;
     width: 90%;
     height: 85%;
     overflow-y: scroll;
@@ -967,7 +966,7 @@ body {
     .img-title {
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      white-space:nowrap;
       font-weight: bold;
       font-size: 15px;
       color: var(--white-text);

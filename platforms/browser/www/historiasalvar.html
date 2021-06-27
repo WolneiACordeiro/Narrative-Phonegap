@@ -18,23 +18,9 @@
     <script src="node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="node_modules/@splidejs/splide/dist/css/splide.min.css">
 
-    <script>
-        new Splide( '.splide' ).mount();
-    </script>
-
 </head>
 
 <body>
-
-<div class="splide">
-	<div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide">Slide 01</li>
-			<li class="splide__slide">Slide 02</li>
-			<li class="splide__slide">Slide 03</li>
-		</ul>
-	</div>
-</div>
 
     <section id="container">
         <div class="blue-header animate-apper">
@@ -53,12 +39,22 @@
         <div class="bottom-block"></div>
 
         <div class="text-gradient">
-            <b>Rua Santo Antônio</b>
-            <span>Registro | SP - Brasil | 21/04/21 - 19:06</span>
+            <b>Via delle Terme di Titoi</b>
+            <span>Roma | Lácio - Itália | 21/04/21 - 16:05</span>
         </div>
 
         <div class="historysave-img">
-            <img class="history-img-content" src="img/historia_img.jpg" alt="Paisagem">
+            
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide"><img src="img/history/views/cafe_studente_2.JPG" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/history/views/cafe_studente_3.JPG" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/history/views/cafe_studente_4.JPG" class="history-img-content" alt="Paisagem"></li>
+                    </ul>
+                </div>
+            </div>
+            
             <div class="mask-icon-history-1">
                 <img src="img/icons/photo.svg" alt="Selecionar Foto">
             </div>
@@ -72,13 +68,13 @@
                 <span>21/04/21</span>
             </div>
             <div class="tag-gradient">
-                <span>19:05</span>
+                <span>16:05</span>
             </div>
             <div class="tag-gradient">
-                <span>#Lorem</span>
+                <span>#Italy</span>
             </div>
             <div class="tag-gradient">
-                <span>#History</span>
+                <span>#Coffee</span>
             </div>
         </div>
 
@@ -102,6 +98,10 @@
         </div>
 
     </section>
+
+    <script>
+        new Splide( '.splide' ).mount();
+    </script>
 
 </body>
 

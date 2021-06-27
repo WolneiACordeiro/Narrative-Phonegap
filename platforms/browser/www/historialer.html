@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Narrative - História</title>
+
+    <script src="node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="node_modules/@splidejs/splide/dist/css/splide.min.css">
 </head>
 
 <body>
@@ -25,7 +28,7 @@
             <div class="blue-header-center">
                 <a href="javascript:javascript:history.go(-1)"><img class="back-icon"
                         src="img/icons/arrow_back_white_24dp.svg" alt="Voltar"></a>
-                <span>Lorem Ipsum</span>
+                <span>Coliseum</span>
             </div>
             <div class="blue-header-bottom">
                 <img src="img/components/line_bot.svg" alt="Linha">
@@ -34,29 +37,37 @@
         <div class="bottom-block"></div>
 
         <div class="text-gradient">
-            <b>Rua Santo Antônio</b>
-            <span>Registro | SP - Brasil | 21/04/21 - 19:06</span>
+            <b>Via delle Terme di Titoi</b>
+            <span>Roma | Lácio - Itália | 21/04/21 - 16:05</span>
         </div>
 
         </div>
         
         <div class="history-img">
-            <img class="mask-img-history" src="img/user_clara.jpg" alt="Usuário">
-            <img class="history-img-content" src="img/historia_img.jpg" alt="Paisagem">
+            <img class="mask-img-history" src="img/history/users/user_milena.jpg" alt="Usuário">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide"><img src="img/history/views/coliseum.jpg" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/history/views/passione_diavolo.JPG" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/history/views/templo_venus.JPG" class="history-img-content" alt="Paisagem"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="tag-area">
             <div class="tag-gradient">
-                <span>21/04/21</span>
+                <span>24/03/19</span>
             </div>
             <div class="tag-gradient">
-                <span>19:05</span>
+                <span>10:06</span>
             </div>
             <div class="tag-gradient">
-                <span>#Lorem</span>
+                <span>#Italy</span>
             </div>
             <div class="tag-gradient">
-                <span>#History</span>
+                <span>#Tour</span>
             </div>
         </div>
 
@@ -65,7 +76,13 @@
         <div class="history-text-container">
             <div class="myBox">
                 <p>
-                    <span>&#8192;&#8192;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ante volutpat, dapibus massa nec, viverra nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras et ornare justo. Mauris hendrerit tincidunt mauris id viverra. Maecenas consequat tempus libero dictum varius. In feugiat metus a dolor interdum laoreet. In eget suscipit lorem. Cras a justo tincidunt, scelerisque diam nec, suscipit nibh. Sed vel augue velit. Donec vel rhoncus dolor, sed finibus lacus. Sed id fringilla turpis. Nam tristique vulputate venenatis.
+                    <span>&#8192;&#8192;</span>
+                    <p><span>&#8192;&#8192;</span>O Coliseu poderia abrigar, estima-se, entre 50 mil e 80 mil espectadores, com uma audiência média de cerca de 65 mil pessoas.</p>
+                    <p><span>&#8192;&#8192;</span>O edifício era usado para combates de gladiadores e espetáculos públicos, tais como simulações de batalhas marítimas (em um curto período de tempo como o hipogeu era inundado através de mecanismos de apoio), caças de animais selvagens, execuções, encenações de batalhas famosas e dramas baseados na mitologia clássica.</p>
+                    <p><span>&#8192;&#8192;</span>O prédio deixou de ser usado para entretenimento na era medieval. 
+                    <p><span>&#8192;&#8192;</span>Mais tarde foi reutilizado para vários fins, tais como habitação, oficinas, sede de uma ordem religiosa, uma fortaleza, uma pedreira e um santuário cristão.</p> 
+                    <p><span>&#8192;&#8192;</span>Em 2007, o monumento foi eleito informalmente como uma das sete maravilhas do mundo moderno.</p>
+                    </p>
                 </p>
             </div>
         </div>
@@ -85,6 +102,10 @@
         </div>
         
     </section>
+
+    <script>
+        new Splide( '.splide' ).mount();
+    </script>
 
 </body>
 
