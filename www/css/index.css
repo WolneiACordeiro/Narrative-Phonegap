@@ -158,7 +158,6 @@
     margin: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     scroll-behavior: smooth;
-    
 }
 
 body {
@@ -328,7 +327,8 @@ body {
 .tag-gradient span {
     text-align: center;
     width: 50px;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-left: 5px;
     margin-right: 5px;
     font-weight: bold;
@@ -416,6 +416,15 @@ body {
     margin: 10px;
     width: 30px;
     padding-top: 3px;
+    margin-left: 245px;
+}
+
+.id-icon-main {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    position: absolute;
+    margin: 10px;
+    width: 30px;
     margin-left: 245px;
 }
 
@@ -571,7 +580,7 @@ body {
     width: 65px;
     height: 65px;
     object-fit: cover;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-top: 60px;
     z-index: 999;
     box-shadow: 0 0px 10px 0 var(--box-shadow);
@@ -650,12 +659,12 @@ body {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 100% 0;
+      /*object-position: 100% 0;*/
   }
 
 .myBox {
     border: none;
-    text-align: justify;
+    text-align: start;
     width: 90%;
     height: 85%;
     overflow-y: scroll;
@@ -870,7 +879,6 @@ body {
 
     .map-area-view {
         width: 100%;
-        min-width: 375px;
         min-height: 84.7vh;
         transform: translateY(-55px);
     }
@@ -925,6 +933,7 @@ body {
         align-items: flex-end;
         bottom: 0;
         width: 100%;
+        overflow-x: clip;
     }
 
     .slider-area {
@@ -1008,7 +1017,7 @@ body {
 .leaflet-popup-content a {
     width: 4rem;
     height: 4rem;
-    background: #15c3d6;
+    background: var(--blue-gradient);;
     box-shadow: 17.2828px 27.65px 41.48px rgba(23, 142, 166, 0.16);
     border-radius: 12px;
     
@@ -1063,3 +1072,127 @@ body {
     text-decoration: none;
 }
 
+/* MODAL */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999999; 
+    padding-top: calc(70vh / 2); 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 288px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  .close-x {
+    position: absolute;
+    right: 4px;
+    top: -4px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    background-color: #00aeef;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-body {
+    height: 30vh;
+    padding: 2px 16px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .modal-body-search {
+        height: auto;
+    }
+
+    .modal-body-sub {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .modal-body-sub p {
+        margin-top: 15px;
+        margin-bottom: 40px;
+        overflow-wrap: break-word;
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-body-options {
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        justify-content: space-around;
+    }
+  
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: #00aeef;
+    color: white;
+  }
+
+  .modal-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00aeef;
+    padding: 10px 20px;
+    border-radius: 0 12px 0 12px;
+    }
+
+  .modal-option:visited {
+      color: #fff;
+      background-color: #00aeef;
+  }
+
+  .modal-option:active {
+    color: #fff;
+    background-color: #00aeef;
+    padding: 8px 18px;
+    transition: ease-in .1s;
+    font-size: 12px;
+}
+
+  /* MODAL */

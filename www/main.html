@@ -118,7 +118,7 @@
 
     <div class="sub-options main-sub-options">
       <div class="sub-options-block-1">
-          <img src="img/icons/search_blue.svg" alt="Procurar">
+          <a id="myBtn"><img src="img/icons/search_blue.svg" alt="Procurar"></a>
       </div>
       <img src="img/components/crop_line.svg" alt="Linha">
       <div class="sub-options-block-2">
@@ -130,6 +130,33 @@
       </div>
   </div>
   </div>
+
+  <div id="myModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h3>Procurar</h3>
+          </div>
+          <div>
+            <span class="close close-x">&times;</span>
+          </div>
+        </div>
+        <div class="modal-body modal-body-search">
+            <div class="modal-body-sub">
+                <div class="search-gradient">
+                  <div class="input-block-white">
+                      <input type="text" id="search" name="search">
+                  </div>
+                  <img class="id-icon-main" src="img/icons/search.svg" alt="Procurar">
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+
+</div>
 
   <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
 
@@ -192,7 +219,7 @@
       });
     });
   </script>
-
+   <script src="js/modal.js"></script>
 </body>
 
 </html>
