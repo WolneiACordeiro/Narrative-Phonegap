@@ -30,30 +30,38 @@ var app = {
     }
 };
 
-// MODAL //
-// Get the modal
-var modal = document.getElementById("myModal");
+function corrigirTexto(texto) {
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+    var textoUpper = texto.slice(0, 1);
+    var textoUpperTransform = textoUpper.toUpperCase();
+    var textoLower = texto.slice(1, texto.length);
+    var textoLowerTransform = textoLower.toLowerCase();
+    var textoFinal = textoUpperTransform + textoLowerTransform;
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    return textoFinal;
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+function inserirTagUm() {
+      var tagum = document.getElementById("tagum").value;
+      var tagum = tagum.toUpperCase();
+      var tagum = tagum.replaceAll(/\s/g, '');
+      document.getElementById("tag-1").innerHTML = `#${tagum}`;
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+function inserirTagDois() {
+    var tagdois = document.getElementById("tagdois").value;
+    var tagdois = tagdois.toUpperCase();
+    var tagdois = tagdois.replaceAll(/\s/g, '');
+    document.getElementById("tag-2").innerHTML = `#${tagdois}`;
 }
-// MODAL //
+
+function inserirTitulo() {
+    var titulo = document.getElementById("titulo").value;
+    var titulo = corrigirTexto(titulo);
+    if (titulo.trim() == ``) {
+        document.getElementById("titulo-1").innerHTML = `Insira um Título`;
+    } else {
+        document.getElementById("titulo-1").innerHTML = `${titulo}`;
+    }
+}

@@ -162,6 +162,11 @@
 
   <script>
 
+var icon_history = L.icon({
+      iconUrl: 'img/icons/pointmark_v3.svg',
+      iconSize: [100, 100]
+    });
+
     var planes = [
       ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/cafe_studente_2.jpg"></a>', 41.89232667402628, 12.493077983412293],
       ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/templo_venus.jpg"></a>', 41.89281817651182, 12.493038112139613],
@@ -183,10 +188,10 @@
     }).addTo(map);
 
     map.scrollWheelZoom.disable();
-    /*map.dragging.disable();*/
+    map.dragging.disable();
 
     for (var i = 0; i < planes.length; i++) {
-      marker = new L.marker([planes[i][1], planes[i][2]])
+      marker = new L.marker([planes[i][1], planes[i][2], { icon_history }])
         .bindPopup(planes[i][0])
         .addTo(map);
     }
