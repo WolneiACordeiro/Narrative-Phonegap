@@ -9,11 +9,11 @@
     <meta name="viewport"
         content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
-
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Narrative - Entrar</title>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    
 </head>
 
 <body>
@@ -25,7 +25,9 @@
             <div class="blue-header-center">
                 <a href="javascript:javascript:history.go(-1)"><img class="back-icon"
                         src="img/icons/arrow_back_white_24dp.svg" alt="Voltar"></a>
-                <span>Entrar</span>
+                <span>
+                    Entrar
+                </span>
             </div>
             <div class="blue-header-bottom">
                 <img src="img/components/line_bot.svg" alt="Linha">
@@ -34,16 +36,15 @@
         <div class="bottom-block"></div>
 
         <div class="form-entrar animate-apper">
-            <form name="criar-conta" action="">
+            <form name="criar-conta" action="main.php">
                 <div class="input-block">
-                    <label for="user_name"><b>Nome</b></label>
-                    <input type="text" id="user_name" name="usuario_nome">
+                    <label for="user_name"><b>E-mail</b></label>
+                    <input type="text" id="email" name="campo_login">
                 </div>
                 <div class="input-block">
                     <label for="user_email"><b>Senha</b></label>
-                    <input type="text" id="user_email" name="usuario_email">
+                    <input type="text" id="password" name="campo_senha">
                 </div>
-            </form>
             <div class="login-options">
                 <div class="login-options-option">
                     <a href="#"><img src="img/icons/google_icon.svg" alt="Google"></a>
@@ -60,11 +61,12 @@
             </div>
         </div>
         
-        <a href="main.html" class="link animate-apper">
+        <a class="link animate-apper" id="enter">
             <div class="button-gradient">
                 Entrar
             </div>
         </a>
+        </form>
 
     </section>
 
@@ -75,7 +77,7 @@
 
 <script language="javascript">
     window.onload = function onfocus() {
-        document.getElementById('user_name').focus();
+        document.getElementById('email').focus();
     };
 </script>
 

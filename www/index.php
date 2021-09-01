@@ -22,12 +22,12 @@
         <div class="logo animate-apper">
             <img src="img/logo.svg" alt="Narrative">
         </div>
-        <a href="entrar.html" class="link animate-apper">
+        <a href="entrar.php" class="link animate-apper">
             <div class="button-gradient">
                 Entrar
             </div>
         </a>
-        <a href="criarconta.html" class="link animate-apper">
+        <a href="criarconta.php" class="link animate-apper">
             <div class="button-stroke">
                 Criar Conta
             </div>
