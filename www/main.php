@@ -1,3 +1,7 @@
+<?php
+include("php/conexao.php");
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,20 +15,75 @@
   <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <script>
+      $(document).ready(function() { 
+        var idbusca = parseFloat(localStorage.getItem('idparam'));
+        var url = "php/consultaid.php?id="+ idbusca;
+            $.ajax({
+                  type: "POST",crossDomain: true, cache: false,
+                  url: url,
+                  data: url,
+                      success: function(data){
+                          $.getJSON(url, function(result) {       			   
+                              $.each(result, function(i, field) {
+                                                          
+                                  var id = field.idConta;
+                                  var email = field.emailConta;
+                                  var senha = field.senhaConta;  
+
+                              });        
+                          });	
+                      }
+                  });
+		    });	
+  </script>
+
+  <script>
+        window.onload = function() {
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            document.getElementById("dataSave").innerHTML = `${date}`;
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            document.getElementById("horaSave").innerHTML = `${time}`;
+        }
+
+        let randomLat = Math.floor(Math.random() * 20000000000);
+        let randomLong = Math.floor(Math.random() * 20000000000);
+
+        let valorA = "-24.488" + randomLat;
+        let finalLat = parseFloat(valorA);
+        let valorB = "-47.841" + randomLong;
+        let finalLong = parseFloat(valorB);
+        
+    </script>
+
 </head>
 
 <body>
-  <section id="container">
-    <div class="blue-header animate-apper">
+
+<?php
+  $usuario_id = $_GET["id"];
+  $query = mysqli_query($con,"SELECT * FROM contausuario WHERE idConta = $usuario_id");
+  $exibeUsuario = mysqli_fetch_array($query); 
+
+  $imagem = $exibeUsuario[4];
+?>
+                            
+<input type="hidden" id="campo-id" name="campo_id" value="<?php echo $exibeUsuario[0] ?>">
+
+  <section id="container-main">
+    <div class="blue-header-main animate-apper">
       <div class="blue-header-top">
         <img src="img/components/line_top.svg" alt="Linha">
       </div>
       <div class="blue-header-center ">
-        <a href="javascript:javascript:history.go(-1)"><img class="back-icon" src="img/icons/arrow_back_white_24dp.svg"
+        <a href="entrar.php"><img class="back-icon" src="img/icons/arrow_back_white_24dp.svg"
             alt="Voltar"></a>
         <div class="text-historic">
-          <b>Via delle Terme di Titoi</b>
-          <span>Roma | Lácio - Itália | 21/04/21 - 16:05</span>
+        <b id="localSave">Av. Pref Jonas Banks Leite</b>
+            <div class="h-location-main"><span id="cidadeSave">Registro</span> <span>|</span> <span id="estadoSave">São Paulo - Brasil</span> <br> <span id="dataSave">21/04/21</span> <span>-</span> <span id="horaSave">16:05</span></div>
         </div>
       </div>
       <div class="blue-header-bottom">
@@ -34,91 +93,112 @@
     <div class="bottom-block"></div>
 
     <div id="map" class="map-area-view">
-      <a href="usuarioeu.html"><img class="mask-img-map" src="img/history/users/user_gisele.jpg" alt="Usuário"></a>
+      <a href="usuarioeu.php?id=<?php echo $exibeUsuario[0] ?>"><img class="mask-img-map" src='img/history/users/<?php echo $imagem ?>'></a>
     </div>
-
-
 
   </section>
 
   <div class="slider-container">
     <section class="center slider">
 
-      <a href="historialer.html?id=1">
+    <?php
+				$query = mysqli_query($con, "SELECT * FROM contaUsuario inner join historia on idUsuarioHistoria = idConta");
+				while ($exibe = mysqli_fetch_array($query)) { 
+			?>
+
+      <a href="historialer.php?id=<?php echo $exibe[5] ?>">
+        <div class="slider-area">
+          <div class="img-area-main">
+            <img class="mask-img-history-medium" src="img/history/users/<?php echo $exibe[4] ?>" alt="Usuário">
+            <img class="img-area" src="img/history/views/<?php echo $exibe[19] ?>">
+          </div>
+          <div class="img-desc">
+            <span class="img-title"><?php echo $exibe[6] ?></span>
+            <span class="img-desc-text"><?php echo $exibe[1] ?></span>
+            <span class="img-desc-text img-desc-date"><?php echo $exibe[10] ?> - <?php echo $exibe[11] ?></span>
+          </div>
+        </div>
+      </a>
+
+			<?php
+				}
+			?> 
+
+      <!--a href="historialer.php?id=1">
         <div class="slider-area">
           <div class="img-area-main">
             <img class="mask-img-history-medium" src="img/history/users/user_milena.jpg" alt="Usuário">
             <img class="img-area" src="img/history/views/coliseum.jpg">
           </div>
           <div class="img-desc">
-            <span class="img-title">Coliseum</span>
+            <span class="img-title">Noite Chuvosa - Av. Banks Leite</span>
             <span class="img-desc-text">Milena Bellucci</span>
             <span class="img-desc-text img-desc-date">24/03/19 - 10:06</span>
           </div>
         </div>
       </a>
 
-      <a href="historialer.html?id=1">
+      <a href="historialer.php?id=1">
         <div class="slider-area">
           <div class="img-area-main">
             <img class="mask-img-history-medium" src="img/history/users/user_marco.jpg" alt="Usuário">
             <img class="img-area" src="img/history/views/templo_venus.JPG">
           </div>
           <div class="img-desc">
-            <span class="img-title">Templo de Vénus e Roma</span>
+            <span class="img-title">1929</span>
             <span class="img-desc-text">Marco Fiorentini</span>
             <span class="img-desc-text">02/12/15 - 11:26</span>
           </div>
         </div>
       </a>
 
-      <a href="historialer.html?id=1">
+      <a href="historialer.php?id=1">
         <div class="slider-area">
           <div class="img-area-main">
             <img class="mask-img-history-medium" src="img/history/users/user_nera.jpg" alt="Usuário">
             <img class="img-area" src="img/history/views/driking_water.jpg">
           </div>
           <div class="img-desc">
-            <span class="img-title">Drinking water fountain</span>
+            <span class="img-title">Brasil Sushi Tradicional</span>
             <span class="img-desc-text">Neera Siciliani</span>
             <span class="img-desc-text">21/04/21 - 19:06</span>
           </div>
         </div>
       </a>
 
-      <a href="historialer.html?id=1">
+      <a href="historialer.php?id=1">
         <div class="slider-area">
           <div class="img-area-main">
             <img class="mask-img-history-medium" src="img/history/users/user_basilio.jpg" alt="Usuário">
             <img class="img-area" src="img/history/views/la_biga.jpg">
           </div>
           <div class="img-desc">
-            <span class="img-title">Caffè dello Studente</span>
+            <span class="img-title">Rei do Churrasquinho</span>
             <span class="img-desc-text">Basilio Conti</span>
             <span class="img-desc-text">18/09/20 - 14:32</span>
           </div>
         </div>
       </a>
 
-      <a href="historialer.html?id=1">
+      <a href="historialer.php?id=1">
         <div class="slider-area">
           <div class="img-area-main">
             <img class="mask-img-history-medium" src="img/history/users/user_aurelia.jpg" alt="Usuário">
             <img class="img-area" src="img/history/views/meta_sudans.jpg">
           </div>
           <div class="img-desc">
-            <span class="img-title">Meta Sudans</span>
+            <span class="img-title">Ed. Bela Vista</span>
             <span class="img-desc-text">Aurelia Trevisani</span>
             <span class="img-desc-text">05/01/18 - 11:31</span>
           </div>
         </div>
-      </a>
+      </a-->
 
     </section>
 
     <div class="sub-options main-sub-options">
-      <div class="sub-options-block-1">
-          <a id="myBtn"><img src="img/icons/search_blue.svg" alt="Procurar"></a>
+      <div id="historia-localiza" class="sub-options-block-1">
+          <a href="historiasalvar.php?id=<?php echo $exibeUsuario[0] ?>&lat=22&long=22"><img src="img/icons/create-history-2.svg" alt="Procurar" width="35px"></a>
       </div>
       <img src="img/components/crop_line.svg" alt="Linha">
       <div class="sub-options-block-2">
@@ -126,60 +206,42 @@
       </div>
       <img src="img/components/crop_line.svg" alt="Linha">
       <div class="sub-options-block-3">
-          <a href="historico.html"><img src="img/icons/hist_list.svg" alt="Lista"></a>
+          <a href="historiasarea.php"><img src="img/icons/hist_list.svg" alt="Lista"></a>
       </div>
-  </div>
-  </div>
-
-  <div id="myModal" class="modal">
-
-    <div class="modal-content">
-        <div class="modal-header">
-          <div>
-            <h3>Procurar</h3>
-          </div>
-          <div>
-            <span class="close close-x">&times;</span>
-          </div>
-        </div>
-        <div class="modal-body modal-body-search">
-            <div class="modal-body-sub">
-                <div class="search-gradient">
-                  <div class="input-block-white">
-                      <input type="text" id="search" name="search">
-                  </div>
-                  <img class="id-icon-main" src="img/icons/search.svg" alt="Procurar">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-        </div>
     </div>
 
-</div>
+  </div>
+  </div>
 
   <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
 
   <script>
 
-var icon_history = L.icon({
-      iconUrl: 'img/icons/pointmark_v3.svg',
-      iconSize: [100, 100]
+    var icons = L.icon({
+      iconUrl: 'img/icons/pointhist_v1.svg',
+      iconSize: [45, 45]
     });
-
     var planes = [
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/cafe_studente_2.jpg"></a>', 41.89232667402628, 12.493077983412293],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/templo_venus.jpg"></a>', 41.89281817651182, 12.493038112139613],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/royal_art_cafe.jpg"></a>', 41.89267452521032, 12.49381320968053],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/driking_water.jpg"></a>', 41.8921711495052, 12.493995022683954],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/la_biga.jpg"></a>', 41.89133254291576, 12.492939745568014],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/meta_sudans.jpg"></a>', 41.89265742694833, 12.492922250319955],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/oppio_cafe.jpg"></a>', 41.892225735699, 12.4927678687587],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/passione_diavolo.jpg"></a>', 41.89147109765869, 12.49357571201849],
-      ['<a href="historialer.html?id=1" class="read-history"><img src="img/history/views/coliseum.jpg"></a>', 41.8910790391766, 12.493452340188629]
+      <?php
+				$query = mysqli_query($con, "SELECT * FROM contaUsuario inner join historia on idUsuarioHistoria = idConta");
+				while ($exibeLocal = mysqli_fetch_array($query)) { 
+			?>
+      ['<a href="historialer.php?id=<?php echo $exibeLocal[5] ?>" class="read-history"><img src="img/history/views/<?php echo $exibeLocal[19] ?>"></a>', <?php echo $exibeLocal[16] ?>, <?php echo $exibeLocal[17] ?>],
+      <?php
+				}
+			?>
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/templo_venus.jpg"></a>', -24.48872576080994, -47.84101830041374],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/royal_art_cafe.jpg"></a>', -24.488270090517993, -47.84200619179869],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/driking_water.jpg"></a>', -24.489146535964984, -47.84121903633443],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/la_biga.jpg"></a>', -24.488360403679977, -47.84095514753982],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/meta_sudans.jpg"></a>', -24.488465380426263, -47.84181037069064],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/oppio_cafe.jpg"></a>', -24.487781577290555, -47.84120775903551],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/passione_diavolo.jpg"></a>', -24.487859575328095, -47.84101378949418],
+      //['<a href="historialer.php?id=1" class="read-history"><img src="img/history/views/coliseum.jpg"></a>', -24.48851175809058, -47.84119346266169]
     ];
 
-    var map = L.map('map', { zoomControl: false }).setView([41.8923148571299, 12.49343740382676], 18);
+
+    var map = L.map('map', { zoomControl: false }).setView([finalLat, finalLong], 18);
     mapLink =
       '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     L.tileLayer(
@@ -191,9 +253,10 @@ var icon_history = L.icon({
     map.dragging.disable();
 
     for (var i = 0; i < planes.length; i++) {
-      marker = new L.marker([planes[i][1], planes[i][2], { icon_history }])
-        .bindPopup(planes[i][0])
-        .addTo(map);
+      marker = new L.marker([planes[i][1], planes[i][2]], {icon: icons})
+                    .bindPopup(planes[i][0])
+                    .setZIndexOffset(99999999999)
+                    .addTo(map);
     }
 
     var icon = L.icon({
@@ -206,9 +269,9 @@ var icon_history = L.icon({
       className: 'map-popup',
       minWidth: 240,
       minHeight: 240
-    }).setContent('<a href="historiasalvar.html?id=1" class="choose-history"><img src="img/icons/create-history.svg"></a>')
+    }).setContent('<a href="historiasalvar.php?id=<?php echo $exibeUsuario[0] ?>" class="choose-history"><img src="img/icons/create-history.svg"></a>')
 
-    L.marker([41.8923148571299, 12.49343740382676], { icon }).addTo(map).bindPopup(popup);
+    L.marker([finalLat, finalLong], { icon }).addTo(map);
 
   </script>
 
@@ -224,7 +287,12 @@ var icon_history = L.icon({
       });
     });
   </script>
-   <script src="js/modal.js"></script>
+
+  <script>
+      var idUsuario = document.getElementById("campo-id").value;
+      document.getElementById("historia-localiza").innerHTML = `<a href="historiasalvar.php?id=${idUsuario}&lat=${finalLat}&long=${finalLong}"><img src="img/icons/create-history-2.svg" alt="Procurar" width="35px"></a>`;
+    </script>
+
 </body>
 
 </html>

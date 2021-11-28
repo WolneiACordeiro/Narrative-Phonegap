@@ -188,7 +188,18 @@ body {
 
 
 #container {
+    min-height: 100%;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: 999;
+}
+
+#container-main {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -209,6 +220,18 @@ body {
 .logo {
     width: 260px;
     margin-top: 200px;
+    margin-bottom: 150px;
+}
+
+.logo h2 {
+    color: #00aeef;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.logo-sucess {
+    width: 260px;
+    margin-top: 160px;
     margin-bottom: 150px;
 }
 
@@ -249,7 +272,34 @@ body {
     color: var(--white-text);
     text-shadow: 0 3px 6px var(--text-shadow);
     margin-bottom: 15px;
+    border: 0px;
 }
+
+.button-save-gradient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 30px;
+    box-shadow: 0 0px 10px 0 rgb(112 112 112 / 12%);
+    background-image: var(--blue-gradient);
+    border-radius: 0px 22px 0px 22px;
+    font-size: 1rem;
+    color: var(--white-text);
+    margin-bottom: 15px;
+    border: 0px;
+}
+
+.button-update-gradient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--white-text);
+    border: 0px;
+}
+
+
 
 .text-gradient {
     display: flex;
@@ -309,31 +359,39 @@ body {
 }
 
 .tag-gradient {
-    min-width: 52px;
+    width: 65px;
+    min-width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fit-content;
-    PADDING: 10px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*width: fit-content;*/
+    PADDING: 5px 5px;
     background-image: var(--blue-gradient);
     border-radius: 0px 15px 0px 15px;
     font-size: 1.125rem;
     color: var(--white-text);
-    margin: 10px 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin: 10px 3px;
 }
 
 .tag-gradient span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: center;
-    width: fit-content;
+    /*width: fit-content;*/
     margin-left: 5px;
     margin-right: 5px;
     font-weight: bold;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
 }
 
 .tag-gradient a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: center;
     width: fit-content;
     text-decoration: none;
@@ -344,7 +402,7 @@ body {
 
 .tag-area {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 330px;
     height: fit-content;
     flex-wrap: wrap;
@@ -369,13 +427,13 @@ body {
 
 .tag-gradient-history span {
     text-align: center;
-    width: 50px;
+    width: 53px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-left: 5px;
     margin-right: 5px;
     font-weight: bold;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
 }
 
 .tag-area-history {
@@ -401,7 +459,16 @@ body {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    min-height: 72px;
+    min-height: 100px;
+    background-image: var(--blue-gradient);
+    z-index: 99;
+}
+
+.blue-header-main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 125px;
     background-image: var(--blue-gradient);
     z-index: 99;
 }
@@ -519,12 +586,13 @@ body {
     display: flex;
     flex-direction: column;
     width: 260px;
-    margin-top: 25px;
+    margin-top: 25  px;
     margin-bottom: 25px;
     color: rgb(112, 112, 112);
 }
 
 .input-block-white {
+    padding-top: 20px;
     color: #fff;
     font-weight: 600;
 }
@@ -546,9 +614,32 @@ body {
     transition: ease-in-out .2s;
 }
 
+.input-block input:required:focus:valid {
+  background: url("../img/icons/check_black.svg") no-repeat 95% 50% lightgreen;
+  background-size: 25px;
+}
+
+.input-block input:required:focus:invalid {
+    background: url("../img/icons/clear_black.svg") no-repeat 95% 50% lightsalmon;
+    background-size: 25px;
+}
+
+.form-entrar .input-block input:required:focus:invalid {
+    background: none;
+}
+
 .input-block-white:focus-within::after {
     background: #fff;
     height: 1px;
+}
+
+.input-error{
+    margin-bottom: 0px !important;
+}
+
+.form-conta .password-warning{
+    padding-top: 1px;
+    font-size: 0.8em;
 }
 
 .subtexto {
@@ -556,14 +647,20 @@ body {
     align-items: center;
     justify-content: space-around;
     font-size: 12px;
+    flex-direction: column;
+}
+
+.subtexto span:first-child {
+    margin-bottom: 10px;
 }
 
 .termos {
+    flex-direction: row;
     margin-bottom: 50px;
 }
 
 .recuperar-conta {
-    margin-bottom: 115px;
+    margin-bottom: 80px;
 }
 
 .login-options {
@@ -662,10 +759,10 @@ body {
   }
 
   .user-information b {
-      font-size: 12px;
+      font-size: 1.2rem;
       font-weight: 600;
       margin-top: 25px;
-      margin-bottom: 25px;
+      margin-bottom: 10px;
   }
 
   .user-options {
@@ -673,6 +770,10 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  
+  .user-options-container:last-child {
+    margin-bottom: 20px;
   }
 
   .user-options-option {
@@ -764,7 +865,7 @@ body {
         width: 330px;
         height: 50px;
         border-radius: 25px 25px 0 0;
-        box-shadow: 12px 12px 16px 16px var(--box-shadow-2);
+        box-shadow: 0px 5px 15px 20px rgb(220 220 220 / 35%);
     }
 
     .sub-options-block-1, .sub-options-block-2, .sub-options-block-3 {
@@ -1233,10 +1334,32 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #00aeef;
-    padding: 10px 20px;
+    padding: 0px 40px;
     border-radius: 0 12px 0 12px;
     text-decoration: none;
     }
+
+    .modal-option-delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #00aeef;
+        padding: 15px 40px;
+        border-radius: 0 12px 0 12px;
+        text-decoration: none;
+        }
+    
+
+    .modal-option-2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #00aeef;
+        padding: 10px 20px;
+        border-radius: 0 12px 0 12px;
+        text-decoration: none;
+        width: 25%;
+        }
 
   .modal-option:visited {
       color: #fff;
@@ -1258,4 +1381,58 @@ body {
 
   /* MODAL */
 
-  
+  .big-icon-sucess {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .big-icon-sucess img {
+      width: 150px;
+  }
+
+  .input-lowercase[type="text"] {
+        text-transform: lowercase;
+  }
+
+  .leaflet-popup-close-button {
+      visibility: hidden;
+  }
+
+  .input-image-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splide__pagination {
+    visibility: hidden;
+}
+
+.h-location {
+    width: 300px;
+    margin: 0 20px;
+}
+
+.h-location span {
+    margin: 0;
+}
+
+.h-location-main {
+    width: 290px;
+}
+
+#save-button-area {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+}
+ .my-stories-link {
+     text-decoration: none;
+     color: #111;
+ }
+
+ .sub-options-block-1 a {
+     display: flex;
+     align-items: center;
+ }

@@ -1,3 +1,7 @@
+<?php
+include("php/conexao.php");
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -25,10 +29,7 @@
             <div class="blue-header-center ">
                 <a href="javascript:javascript:history.go(-1)"><img class="back-icon"
                         src="img/icons/arrow_back_white_24dp.svg" alt="Voltar"></a>
-                <div class="text-historic">
-                    <b>Via delle Terme di Titoi</b>
-                    <span>Roma | Lácio - Itália | 21/04/21 - 16:05</span>
-                </div>
+                    <b>Histórico</b>
             </div>
             <div class="blue-header-bottom">
                 <img src="img/components/line_bot.svg" alt="Linha">
@@ -53,36 +54,45 @@
         <img src="img/components/blue_line_2.svg" alt="Linha Azul">
     
     <div id="historic-list">
+
+    <?php
+				$query = mysqli_query($con, "SELECT * FROM contaUsuario inner join historia on idUsuarioHistoria = idConta");
+				while ($exibe = mysqli_fetch_array($query)) { 
+			?>
         <div class="historic-session">
             <div class="historic-session-grid">
                 <div class="historic-session-img">
-                    <img class="mask-img-history-small" src="img/history/users/user_milena.jpg" alt="Usuário">
-                    <img class="history-img-content" src="img/history/views/coliseum.jpg" alt="Paisagem">
+                    <img class="mask-img-history-small" src="img/history/users/<?php echo $exibe[4] ?>" alt="Usuário">
+                    <img class="history-img-content" src="img/history/views/<?php echo $exibe[19] ?>" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Coliseum</b>
-                    <span>Milena Bellucci</span>
+                    <b><?php echo $exibe[6] ?></b>
+                    <span><?php echo $exibe[1] ?></span>
                     <div class="historic-session-desc-sub">
-                        <span>24/03/19 - 10:06 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>158 Favoritos</span>
+                        <span><?php echo $exibe[10] ?> - <?php echo $exibe[11] ?> |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span><?php echo $exibe[18] ?> Favoritos</span>
                     </div>
                 </div>
             </div>
             <div class="tag-area-history">
                 <div class="tag-gradient-history">
-                    <span>24/03/19</span>
+                    <span><?php echo $exibe[10] ?></span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>10:06</span>
+                    <span><?php echo $exibe[11] ?></span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Italy</span>
+                    <span><?php echo $exibe[12] ?></span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Trip</span>
+                    <span><?php echo $exibe[13] ?></span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">
         </div>
+        <?php
+				}
+			?> 
+            
         <div class="historic-session">
             <div class="historic-session-grid">
                 <div class="historic-session-img">
@@ -90,7 +100,7 @@
                     <img class="history-img-content" src="img/history/views/templo_venus.JPG" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Templo de Vénus e Roma</b>
+                    <b>1929</b>
                     <span>Marco Fiorentini</span>
                     <div class="historic-session-desc-sub">
                         <span>02/12/15 - 11:26 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>101 Favoritos</span>
@@ -105,10 +115,10 @@
                     <span>11:26</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Rome</span>
+                    <span>#1929</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Love</span>
+                    <span>#Chuva</span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">
@@ -120,7 +130,7 @@
                     <img class="history-img-content" src="img/history/views/driking_water.jpg" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Drinking water fountain</b>
+                    <b>Brasil Sushi - Tradicional</b>
                     <span>Neera Siciliani</span>
                     <div class="historic-session-desc-sub">
                         <span>21/04/21 - 19:06 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>58 Favoritos</span>
@@ -135,10 +145,10 @@
                     <span>19:06</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Drink</span>
+                    <span>#Comida</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Water</span>
+                    <span>#Japan</span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">
@@ -150,7 +160,7 @@
                     <img class="history-img-content" src="img/history/views/la_biga.jpg" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Caffè dello Studente</b>
+                    <b>Rei do Churrasquinho</b>
                     <span>Basilio Conti</span>
                     <div class="historic-session-desc-sub">
                         <span>18/09/20 - 14:32 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>329 Favoritos</span>
@@ -165,7 +175,7 @@
                     <span>14:32</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Coffee</span>
+                    <span>#Rei</span>
                 </div>
                 <div class="tag-gradient-history">
                     <span>#Food</span>
@@ -180,7 +190,7 @@
                     <img class="history-img-content" src="img/history/views/meta_sudans.jpg" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Meta Sudans</b>
+                    <b>Ed. Bela Vista</b>
                     <span>Aurelia Trevisani</span>
                     <div class="historic-session-desc-sub">
                         <span>05/01/18 - 11:31 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>238 Favoritos</span>
@@ -195,100 +205,10 @@
                     <span>11:31</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Trip</span>
+                    <span>#Lar</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#History</span>
-                </div>
-            </div>
-            <img src="img/components/blue-div-line.svg" alt="Divisória">
-        </div>
-        <div class="historic-session">
-            <div class="historic-session-grid">
-                <div class="historic-session-img">
-                    <img class="mask-img-history-small" src="img/history/users/user_breno.jpg" alt="Usuário">
-                    <img class="history-img-content" src="img/history/views/oppio_cafe.jpg" alt="Paisagem">
-                </div>
-                <div class="historic-session-desc">
-                    <b>Oppío Cafe</b>
-                    <span>Breno Russo</span>
-                    <div class="historic-session-desc-sub">
-                        <span>25/02/20 - 13:01 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>88 Favoritos</span>
-                    </div>
-                </div>
-            </div>
-            <div class="tag-area-history">
-                <div class="tag-gradient-history">
-                    <span>25/02/20</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>13:01</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Coffee</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Food</span>
-                </div>
-            </div>
-            <img src="img/components/blue-div-line.svg" alt="Divisória">
-        </div>
-        <div class="historic-session">
-            <div class="historic-session-grid">
-                <div class="historic-session-img">
-                    <img class="mask-img-history-small" src="img/history/users/user_manuela.jpg" alt="Usuário">
-                    <img class="history-img-content" src="img/history/views/cafe_studente_2.JPG" alt="Paisagem">
-                </div>
-                <div class="historic-session-desc">
-                    <b>Coffee Break</b>
-                    <span>Manuela Giordano</span>
-                    <div class="historic-session-desc-sub">
-                        <span>08/08/19 - 08:56 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>478 Favoritos</span>
-                    </div>
-                </div>
-            </div>
-            <div class="tag-area-history">
-                <div class="tag-gradient-history">
-                    <span>08/08/19</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>08:56</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Coffee</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Break</span>
-                </div>
-            </div>
-            <img src="img/components/blue-div-line.svg" alt="Divisória">
-        </div>
-        <div class="historic-session">
-            <div class="historic-session-grid">
-                <div class="historic-session-img">
-                    <img class="mask-img-history-small" src="img/history/users/user_eduardo.jpg" alt="Usuário">
-                    <img class="history-img-content" src="img/history/views/cafe_studente_4.JPG" alt="Paisagem">
-                </div>
-                <div class="historic-session-desc">
-                    <b>Good Vibes Day - Bar Del Mose</b>
-                    <span>Eduardo Siciliani</span>
-                    <div class="historic-session-desc-sub">
-                        <span>25/09/21 - 15:09 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>198 Favoritos</span>
-                    </div>
-                </div>
-            </div>
-            <div class="tag-area-history">
-                <div class="tag-gradient-history">
-                    <span>25/09/21</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>15:09</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Bar</span>
-                </div>
-                <div class="tag-gradient-history">
-                    <span>#Italy</span>
+                    <span>#Novo</span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">
@@ -300,7 +220,7 @@
                     <img class="history-img-content" src="img/history/views/royal_art_cafe.jpg" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Royal Art Café</b>
+                    <b>Secos e Molhados</b>
                     <span>Deodata Fanucci</span>
                     <div class="historic-session-desc-sub">
                         <span>03/04/20 - 10:45 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>358 Favoritos</span>
@@ -315,10 +235,10 @@
                     <span>10:45</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Coffee</span>
+                    <span>#Loja</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Art</span>
+                    <span>#Store</span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">
@@ -330,7 +250,7 @@
                     <img class="history-img-content" src="img/history/views/passione_diavolo.JPG" alt="Paisagem">
                 </div>
                 <div class="historic-session-desc">
-                    <b>Passione vs. Diavolo</b>
+                    <b>Passado vs. Presente</b>
                     <span>Celio Sagese</span>
                     <div class="historic-session-desc-sub">
                         <span>25/01/21 - 11:08 |</span><i> <img src="img/icons/star.svg" alt="Favoritos"> </i><span>256 Favoritos</span>
@@ -345,10 +265,10 @@
                     <span>11:08</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Art</span>
+                    <span>#History</span>
                 </div>
                 <div class="tag-gradient-history">
-                    <span>#Italy</span>
+                    <span>#Registro</span>
                 </div>
             </div>
             <img src="img/components/blue-div-line.svg" alt="Divisória">

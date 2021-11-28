@@ -1,3 +1,7 @@
+<?php
+include("php/conexao.php");
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -9,9 +13,6 @@
     <meta name="viewport"
         content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
-
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Narrative - História</title>
 
@@ -20,7 +21,16 @@
 </head>
 
 <body>
+
+<?php
+
+$query = mysqli_query($con, "SELECT * FROM contaUsuario inner join historia on idUsuarioHistoria = idConta AND idHistoria =" . $_GET["id"]);
+while ($exibe = mysqli_fetch_array($query)) {
+
+?>
+
     <section id="container">
+        <input type="hidden" name="campo_codigo" value="<?php echo $exibe[5] ?>">
         <div class="blue-header animate-apper">
             <div class="blue-header-top">
                 <img src="img/components/line_top.svg" alt="Linha">
@@ -28,7 +38,7 @@
             <div class="blue-header-center">
                 <a href="javascript:javascript:history.go(-1)"><img class="back-icon"
                         src="img/icons/arrow_back_white_24dp.svg" alt="Voltar"></a>
-                <span>Coliseum</span>
+                <span><?php echo $exibe[6] ?></span>
             </div>
             <div class="blue-header-bottom">
                 <img src="img/components/line_bot.svg" alt="Linha">
@@ -37,20 +47,18 @@
         <div class="bottom-block"></div>
 
         <div class="text-gradient">
-            <b>Via delle Terme di Titoi</b>
-            <span>Roma | Lácio - Itália | 21/04/21 - 16:05</span>
+            <b><?php echo $exibe[7] ?></b>
+            <div class="h-location"><span id="cidadeSave"><?php echo $exibe[8] ?></span> <span>|</span> <span id="estadoSave"><?php echo $exibe[9] ?></span> <span>|</span> <span id="dataSave"><?php echo $exibe[10] ?></span> <span>-</span> <span id="horaSave"><?php echo $exibe[11] ?></span></div>
         </div>
 
         </div>
         
         <div class="history-img">
-            <img class="mask-img-history" src="img/history/users/user_milena.jpg" alt="Usuário">
+            <img class="mask-img-history" src="img/history/users/<?php echo $exibe[4] ?>" alt="Usuário">
             <div class="splide">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <li class="splide__slide"><img src="img/history/views/coliseum.jpg" class="history-img-content" alt="Paisagem"></li>
-                        <li class="splide__slide"><img src="img/history/views/passione_diavolo.JPG" class="history-img-content" alt="Paisagem"></li>
-                        <li class="splide__slide"><img src="img/history/views/templo_venus.JPG" class="history-img-content" alt="Paisagem"></li>
+                        <li class="splide__slide"><img src="img/history/views/<?php echo $exibe[19] ?>" class="history-img-content" alt="Paisagem"></li>
                     </ul>
                 </div>
             </div>
@@ -58,16 +66,16 @@
 
         <div class="tag-area">
             <div class="tag-gradient">
-                <a href="">24/03/19</a>
+                <a href=""><span><?php echo $exibe[10] ?></span></a>
             </div>
             <div class="tag-gradient">      
-                <a href=""><span>10:06</span></a>
+                <a href=""><span><?php echo $exibe[11] ?></span></a>
             </div>
             <div class="tag-gradient">
-                <a href=""><span>#Italy</span></a>
+                <a href=""><span><?php echo $exibe[12] ?></span></a>
             </div>
             <div class="tag-gradient">
-                <a href=""><span>#Tour</span></a>
+                <a href=""><span><?php echo $exibe[13] ?></span></a>
             </div>
         </div>
 
@@ -76,12 +84,7 @@
         <div class="history-text-container">
             <div class="myBox">
                 <p>
-                    <span>&#8192;&#8192;</span>
-                    <p><span>&#8192;&#8192;</span>O Coliseu poderia abrigar, estima-se, entre 50 mil e 80 mil espectadores, com uma audiência média de cerca de 65 mil pessoas.</p>
-                    <p><span>&#8192;&#8192;</span>O edifício era usado para combates de gladiadores e espetáculos públicos, tais como simulações de batalhas marítimas (em um curto período de tempo como o hipogeu era inundado através de mecanismos de apoio), caças de animais selvagens, execuções, encenações de batalhas famosas e dramas baseados na mitologia clássica.</p>
-                    <p><span>&#8192;&#8192;</span>O prédio deixou de ser usado para entretenimento na era medieval. 
-                    <p><span>&#8192;&#8192;</span>Mais tarde foi reutilizado para vários fins, tais como habitação, oficinas, sede de uma ordem religiosa, uma fortaleza, uma pedreira e um santuário cristão.</p> 
-                    <p><span>&#8192;&#8192;</span>Em 2007, o monumento foi eleito informalmente como uma das sete maravilhas do mundo moderno.</p>
+                <?php echo $exibe[14] ?> 
                     </p>
                 </p>
             </div>
@@ -103,9 +106,12 @@
         
     </section>
 
+    <?php } ?>
+
     <script>
         new Splide( '.splide' ).mount();
     </script>
+
 
 </body>
 

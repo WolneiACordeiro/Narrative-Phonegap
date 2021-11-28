@@ -158,7 +158,6 @@
     margin: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     scroll-behavior: smooth;
-    
 }
 
 body {
@@ -250,6 +249,7 @@ body {
     color: var(--white-text);
     text-shadow: 0 3px 6px var(--text-shadow);
     margin-bottom: 15px;
+    border: 0px;
 }
 
 .text-gradient {
@@ -310,6 +310,49 @@ body {
 }
 
 .tag-gradient {
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    PADDING: 10px 10px;
+    background-image: var(--blue-gradient);
+    border-radius: 0px 15px 0px 15px;
+    font-size: 1.125rem;
+    color: var(--white-text);
+    margin: 10px 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.tag-gradient span {
+    text-align: center;
+    width: fit-content;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 0.65rem;
+}
+
+.tag-gradient a {
+    text-align: center;
+    width: fit-content;
+    text-decoration: none;
+    color: var(--white-text);
+    font-size: 0.65rem;
+    font-weight: bold;
+}
+
+.tag-area {
+    display: flex;
+    justify-content: center;
+    width: 330px;
+    height: fit-content;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tag-gradient-history {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -325,17 +368,18 @@ body {
     padding-bottom: 5px;
 }
 
-.tag-gradient span {
+.tag-gradient-history span {
     text-align: center;
     width: 50px;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-left: 5px;
     margin-right: 5px;
     font-weight: bold;
     font-size: 0.65rem;
 }
 
-.tag-area {
+.tag-area-history {
     display: flex;
     justify-content: space-between;
     width: 330px;
@@ -379,6 +423,8 @@ body {
     color: var(--white-text);
     font-size: 1.125rem;
     font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .blue-header-center span{
@@ -390,6 +436,7 @@ body {
 
 .edit-text {
     text-decoration: underline;
+    max-width: 295px;
 }
 
 .blue-header-bottom {
@@ -417,6 +464,19 @@ body {
     width: 30px;
     padding-top: 3px;
     margin-left: 245px;
+}
+
+.id-icon-main {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    position: absolute;
+    margin: 10px;
+    width: 30px;
+    margin-left: 245px;
+}
+
+.id-icon-main-left {
+    margin-left: -240px;
 }
 
 .form-conta {
@@ -487,6 +547,16 @@ body {
     transition: ease-in-out .2s;
 }
 
+.input-block input:required:focus:valid {
+  background: url("../img/icons/check_black.svg") no-repeat 95% 50% lightgreen;
+  background-size: 25px;
+}
+
+.input-block input:required:focus:invalid {
+    background: url("../img/icons/clear_black.svg") no-repeat 95% 50% lightsalmon;
+    background-size: 25px;
+}
+
 .input-block-white:focus-within::after {
     background: #fff;
     height: 1px;
@@ -497,14 +567,20 @@ body {
     align-items: center;
     justify-content: space-around;
     font-size: 12px;
+    flex-direction: column;
+}
+
+.subtexto span:first-child {
+    margin-bottom: 10px;
 }
 
 .termos {
+    flex-direction: row;
     margin-bottom: 50px;
 }
 
 .recuperar-conta {
-    margin-bottom: 115px;
+    margin-bottom: 80px;
 }
 
 .login-options {
@@ -571,7 +647,7 @@ body {
     width: 65px;
     height: 65px;
     object-fit: cover;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-top: 60px;
     z-index: 999;
     box-shadow: 0 0px 10px 0 var(--box-shadow);
@@ -603,7 +679,7 @@ body {
   }
 
   .user-information b {
-      font-size: 12px;
+      font-size: 1.2rem;
       font-weight: 600;
       margin-top: 25px;
       margin-bottom: 25px;
@@ -614,6 +690,10 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  
+  .user-options-container:last-child {
+    margin-bottom: 20px;
   }
 
   .user-options-option {
@@ -650,12 +730,12 @@ body {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 100% 0;
+      /*object-position: 100% 0;*/
   }
 
 .myBox {
     border: none;
-    text-align: justify;
+    text-align: start;
     width: 90%;
     height: 85%;
     overflow-y: scroll;
@@ -705,7 +785,7 @@ body {
         width: 330px;
         height: 50px;
         border-radius: 25px 25px 0 0;
-        box-shadow: 12px 12px 16px 16px var(--box-shadow-2);
+        box-shadow: 0px 5px 15px 20px rgb(220 220 220 / 35%);
     }
 
     .sub-options-block-1, .sub-options-block-2, .sub-options-block-3 {
@@ -870,7 +950,6 @@ body {
 
     .map-area-view {
         width: 100%;
-        min-width: 375px;
         min-height: 84.7vh;
         transform: translateY(-55px);
     }
@@ -925,6 +1004,7 @@ body {
         align-items: flex-end;
         bottom: 0;
         width: 100%;
+        overflow-x: clip;
     }
 
     .slider-area {
@@ -1008,7 +1088,7 @@ body {
 .leaflet-popup-content a {
     width: 4rem;
     height: 4rem;
-    background: #15c3d6;
+    background: var(--blue-gradient);;
     box-shadow: 17.2828px 27.65px 41.48px rgba(23, 142, 166, 0.16);
     border-radius: 12px;
     
@@ -1016,10 +1096,6 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color .2s;
-}
-
-.leaflet-popup-content a:hover {
-    background: #17d6eb
 }
 
 .leaflet-popup-tip {
@@ -1055,7 +1131,7 @@ body {
       object-position: 100% 0;
 }
 
-.leaflet-container a.leaflet-popup-close-button {
+.leaflet-container a .leaflet-popup-close-button {
     visibility: hidden;
 }
 
@@ -1063,3 +1139,155 @@ body {
     text-decoration: none;
 }
 
+/* MODAL */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999999; 
+    padding-top: calc(70vh / 2); 
+    left: 0;
+    top: 0;
+    width: 100.5%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 288px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  .close-x {
+    position: absolute;
+    right: 4px;
+    top: -4px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    background-color: #00aeef;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-header h2 {
+      font-size: 1.2rem;
+      padding: 10px 0;
+  }
+
+  .modal-body {
+    height: 30vh;
+    padding: 2px 16px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .modal-body-search {
+        height: auto;
+    }
+
+    .modal-body-sub {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .modal-body-sub p {
+        margin-top: 15px;
+        margin-bottom: 40px;
+        overflow-wrap: break-word;
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-body-options {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .modal-body-options h1{
+        font-size: 1rem;
+    }
+  
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: #00aeef;
+    color: white;
+  }
+
+  .modal-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00aeef;
+    padding: 0px 40px;
+    border-radius: 0 12px 0 12px;
+    text-decoration: none;
+    }
+
+    .modal-option-2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #00aeef;
+        padding: 10px 20px;
+        border-radius: 0 12px 0 12px;
+        text-decoration: none;
+        width: 25%;
+        }
+
+  .modal-option:visited {
+      color: #fff;
+      background-color: #00aeef;
+  }
+
+  .modal-option:active {
+    color: #fff;
+    background-color: #00aeef;
+    padding: 8px 18px;
+    transition: ease-in .1s;
+    font-size: 12px;
+}
+
+.user-options-no, .user-options-yes {
+    color: #fff;
+    text-decoration: none;
+}
+
+  /* MODAL */
+
+  

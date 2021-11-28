@@ -16,37 +16,6 @@
     <title>Narrative - Criar Conta</title>
 
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#insert").click(function () {
-                var nome = $("#name").val();
-                var email = $("#email").val();
-                var senha = $("#password").val();
-                var dataString = "name=" + nome + "&email=" + email + "&password=" + senha + "&insert=";
-                if ($.trim(nome).length > 0 & $.trim(email).length > 0 & $.trim(senha).length > 0) {
-                    $.ajax({
-                        type: "POST",
-                        url: "php/cadastrar.php",
-                        data: dataString,
-                        crossDomain: true,
-                        cache: false,
-                        beforeSend: function () {
-                            $("#insert").val('Connectando ao banco...');
-                        },
-                        success: function (data) {
-                            if ($.trim(data = "success")) {
-                                alert("Dados Inseridos com sucesso");
-                                $("#insert").val('Cadastrar');
-                            } else if (data == "error") {
-                                alert("error");
-                            }
-                        }
-                    });
-                }
-                return false;
-            });
-        });
-    </script>
 
 </head>
 
@@ -57,7 +26,7 @@
                 <img src="img/components/line_top.svg" alt="Linha">
             </div>
             <div class="blue-header-center">
-                <a href="javascript:javascript:history.go(-1)"><img class="back-icon"
+                <a href="index.php"><img class="back-icon"
                         src="img/icons/arrow_back_white_24dp.svg" alt="Voltar"></a>
                 <span>Criar Conta</span>
             </div>
@@ -68,34 +37,32 @@
         <div class="bottom-block"></div>
 
         <div class="form-conta animate-apper list">
-            <input type="hidden" id="id">
-                <div class="input-block">
-                    <label><b>Nome</b></label>
-                    <input type="text" id="name">
+            <form action="php/cadastrar.php" method="post" id="form-cadastro">
+
+                <input type="hidden" id="id">
+                    <div class="input-block">
+                        <label><b>Nome</b></label>
+                        <input type="text" name="name" id="name" maxlength="30" required>
+                    </div>
+                    <div class="input-block">
+                        <label><b>E-mail</b></label>
+                        <input type="text" id="email" name="email" maxlength="50" required>
+                    </div>
+                        <div class="input-block input-error">
+                            <label><b>Senha</b></label>
+                            <input type="password" name="password" id="password" maxlength="20" required minlength="5" onKeyup="lenghtPassword()">
+                        </div>
+                        <span id="warning" class="input-block password-warning">Mínimo de 6 caracteres</span>
+                        <div class="input-block">
+                            <label><b>Repetir Senha</b></label>
+                            <input type="password" name="confirm_password" id="confirm_password" maxlength="20" required>
+                        </div>
+                    <span id='message'></span>
+                <div class="subtexto termos">
+                    <input type="checkbox" value="Condicoes" name="condicoes" required><span>Concordo com os <a href="#" target="conteudo">Termos & Condições</a></span> 
                 </div>
-                <div class="input-block">
-                    <label><b>E-mail</b></label>
-                    <input type="text" id="email">
-                </div>
-                <div class="input-block">
-                    <label><b>Senha</b></label>
-                    <input type="password" id="password" >
-                </div>
-                <div class="input-block">
-                    <label><b>Repetir Senha</b></label>
-                    <input type="password" id="repeatpassword">
-                </div>
-            <div class="termos subtexto">
-                <input type="checkbox" value="Condicoes" name="condicoes"><span>Concordo com os <a href="#" target="conteudo">Termos & Condições</a></span> 
-            </div>
-            <a class="link animate-apper" id="insert">
-                <div class="button-gradient">
-                    Criar Conta
-                </div>
-            </a>
-            <!--div>
-                <input type="button" id="insert" value="Cadastrar">
-            </div-->
+                <button type="submit" class="button-gradient" id="registerButton">Criar Conta</button>
+            </form>
         </div>
         
         
@@ -112,6 +79,37 @@
     window.onload = function onfocus() {
         document.getElementById('name').focus();
     };
+</script>
+<script language="javascript">
+            var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("As senhas não correspondem");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+//document.getElementById("password").addEventListener("change", lenghtPassword);
+function lenghtPassword(){
+  var senha = document.getElementById('password').value;
+  var backgroundError = document.getElementById('password');
+  var warningFont = document.getElementById('warning');
+  if(senha.length < 6){
+    backgroundError.style.backgroundColor = "lightsalmon";
+    document.getElementById('password').setCustomValidity("Senha inválida!");
+    warningFont.style.color = "lightsalmon";
+  } else if(senha.length >= 6){
+        backgroundError.style.backgroundColor = "white";
+        document.getElementById('password').setCustomValidity("");
+        warningFont.style.color = "lightgreen";
+    }
+}
 </script>
 
 </html>
